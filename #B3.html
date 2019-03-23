@@ -1,0 +1,32 @@
+<script>
+	var sum = 50000;
+	var term = 12;	//month
+	var rate = 22; // %year
+	
+	var p = rate/12/100; // 1/12 - процентной ставки.
+	
+	var total = Math.round(sum*(p+(p/(Math.pow((1+p),term)-1)))*100)/100; // формула для расчета ежемесячного платежа по аннуитетной схеме;
+		
+	for(var i = 1; i<=term; i++){
+		if(i==term){
+			body=sum;
+		}
+		var percent = Math.round(sum*p*100)/100;      // Проценты за месяц
+		var body 	= Math.round((total-percent)*100)/100;  // Тело кредита 
+		
+		sum = sum - body;		// остаток кредита
+		
+		console.log(`Month: ${i}`);
+		
+		console.log(`
+			Total pay: ${total},
+			Body part: ${body},
+			Percent part: ${percent},
+			LEFT: ${sum}
+		`)
+	
+	}
+	
+
+	
+</script>
